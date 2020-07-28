@@ -1,0 +1,64 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <h4>Sector:{{currentSectorName}}</h4>
+        <hr>
+
+        <div class="row">
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Current Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tempStock of stocks" class="col-md-3">
+
+                        <a routerLink="/stocks/{{tempStock.id}}">
+                            <td> {{tempStock.name}}</td>
+                        </a>
+                        <td> {{tempStock.currentPrice |currency:'INR'}}</td>
+                        <td>
+                            <button (click)="addToWatchlist(tempStock)" class="btn btn-primary bt-sm">Add to Watchist</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--if products are empty display a message to the user-->
+        <div *ngIf="stocks?.length == 0" class="alert alert-warning col-md-12" role="alert">
+            No Products Found!!
+        </div>
+        <div class="footer-pagination">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-8" style="padding-left: 30%;">
+                    <ngb-pagination [(page)]="thePageNumber"
+                                    [pageSize]="thePageSize"
+                                    [collectionSize]="theTotalElements"
+                                    [maxSize]="3"
+                                    [boundaryLinks]=true
+                                    (pageChange)="listStocks()">
+                    </ngb-pagination>
+                </div>
+                <div class = "col-md-3 mt-2" style="text-align: right;">
+                    <span class = "mr-2">Top</span>
+
+                    <select (change)="updatePageSize($event.target.value)">
+                        <option>3</option>
+                        <option selected="true">5</option>
+                        <option>8</option>
+                        <option>10</option>
+                        <option>15</option>
+                    </select>
+                    <span class = "mr-2"> stocks seen</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

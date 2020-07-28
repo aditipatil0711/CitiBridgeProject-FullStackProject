@@ -1,0 +1,17 @@
+<div class="main-content">
+    <div class="detail-section section-content-p30">
+
+        <div class="section-content section-content-p30">
+            <h3>{{stock.name}}</h3>
+            <div class="price">{{stock.currentPrice | currency:'INR'}}</div>
+            <button (click)='addToWatchlist()' class="btn btn-primary btn-sm">Add to Watchlist</button>
+            <hr>
+            <h4>Description</h4>
+            <p>{{stock.description}}</p>
+            <p>Percentage Change: {{stock.perChange}}</p>
+            <br>
+
+            <a routerLink="/stocks" class="mt-5">Back to Previous Page</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <div *ngIf="watchlistItems.length>0">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="25%">Stock Name</th>
+                        <th width="50%">Stock Details</th>
+                        <th width="30%"></th>
+                    </tr>
+                    <tr *ngFor="let tempWatchlistItems of watchlistItems">
+                        <td>
+                            <p>{{tempWatchlistItems.name}}</p>
+                        </td>
+                        <td>
+                            <p>Price :{{tempWatchlistItems.currentPrice| currency:'INR'}}</p>
+                        </td>
+                        <td>
+                            <div class="items">
+                                <label>Quantity:</label>{{tempWatchlistItems.quantity}}
+                                <div class="row no-gutters">
+                                    <div class="col">
+                                        <button (click)="incrementQuantity(tempWatchlistItems)"
+                                            class="btn btn-primary btn-sm">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col ml-4 mr-2">
+                                        {{tempWatchlistItems.quantity}}
+                                    </div>
+                                    <div class="col">
+                                        <button (click)="decrementQuantity(tempWatchlistItems)"
+                                            class="btn btn-primary btn-sm">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-8"></div>
+                                </div>
+                            </div>
+                            <br>
+                            <button (click)="remove(tempWatchlistItems)" class = "btn btn-primary btn-sm">Remove</button>
+                            <p class="mt-2">
+                                Subtotal:{{tempWatchlistItems.quantity * tempWatchlistItems.currentPrice| currency:'INR'}}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td style="font-weight: bold">
+                            <p><label>Quantity:</label> {{totalQuantity}}</p>
+                            <p><label> Price:</label> {{totalPrice | currency:'INR'}}</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--if cart is Empty-->
+            <div *ngIf="watchlistItems.length==0" class="alert alert-warning col-md-12" role="alert">
+                Your Watchlist is Empty!!
+            </div>
+
+        </div>
+    </div>
+</div>
