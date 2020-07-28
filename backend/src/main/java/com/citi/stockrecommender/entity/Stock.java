@@ -38,11 +38,15 @@ public class Stock {
     @Column(name = "active")
     private boolean active;
 
-
     @Column(name = "date_created")
     @CreationTimestamp
     private Date dateCreated;
 
+    ///@ManyToMany(cascade = CascadeType.ALL,mappedBy = "stock")
+    //private Set<User> users;
 
 
+    public Long getId() {
+        return Id;
+    }
 }
