@@ -1,15 +1,15 @@
 -- -----------------------------------------------------
 -- Schema full-stack-STOCKS
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `nse-stocks1`;
+DROP SCHEMA IF EXISTS `nse-stocks`;
 
-CREATE SCHEMA `nse-stocks1`;
+CREATE SCHEMA `nse-stocks`;
 USE `nse-stocks` ;
 
 -- -----------------------------------------------------
 -- Table `full-stack-stocks`.`stock_sector`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nse-stocks1`.`stock_sector` (
+CREATE TABLE IF NOT EXISTS `nse-stocks`.`stock_sector` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `sector_name` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
@@ -19,7 +19,7 @@ AUTO_INCREMENT = 1;
 -- -----------------------------------------------------
 -- Table `full-stack-stocks`.`stock`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nse-stocks1`.`stock` (
+CREATE TABLE IF NOT EXISTS `nse-stocks`.`stock` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `sku` VARCHAR(255) DEFAULT NULL,
   `name` VARCHAR(255) DEFAULT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `nse-stocks1`.`stock` (
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
-DROP TABLE IF EXISTS `nse-stocks1`.`users`;
+DROP TABLE IF EXISTS `nse-stocks`.`users`;
 CREATE TABLE `users` (
   `user_id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
@@ -48,17 +48,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-DROP TABLE IF EXISTS `nse-stocks1`.`saved`;
-CREATE TABLE `saved` (
+DROP TABLE IF EXISTS `nse-stocks`.`watchlist_details`;
+CREATE TABLE `watchlist_details` (
   `save_id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `stock_id` BIGINT(20) NOT NULL,
+  `stock_name` VARCHAR(255) DEFAULT NULL,
   `qty` INT(11) DEFAULT NULL,
 	`save_price` DECIMAL(13,2) DEFAULT NULL,
-  PRIMARY KEY (`save_id`),
-  	KEY `fk_stock` (`stock_id`),
-  CONSTRAINT `fk_stock` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`),
-  KEY `fk_user` (`user_id`),
-  CONSTRAINT `fk_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+    `total_price` DECIMAL(13,2) DEFAULT NULL,
+  PRIMARY KEY (`save_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Inserting data for table `users`
@@ -194,9 +191,9 @@ INSERT INTO STOCK (SKU,SECTOR_ID,NAME,DESCRIPTION,CURRENT_PRICE,PER_CHANGE,ACTIV
 VALUES ('INFRATEL',16,'Bharati Infratel','Stocks of Bharati Infratel',3002.00,-0.99,1,now());
 
 
-INSERT INTO SAVED (USER_ID,STOCK_ID,QTY, SAVE_PRICE)
-VALUES (1,2,1,3002);
-INSERT INTO SAVED (USER_ID,STOCK_ID,QTY, SAVE_PRICE)
-VALUES (2,3,2,150);
-INSERT INTO SAVED (USER_ID,	STOCK_ID,QTY, SAVE_PRICE)
-VALUES (3,2,2,6002);
+INSERT INTO WATCHLIST_DETAILS (STOCK_NAME,QTY, SAVE_PRICE,TOTAL_PRICE)
+VALUES ('Bajaj-Auto',10,3002,30020);
+INSERT INTO WATCHLIST_DETAILS (STOCK_NAME,QTY, SAVE_PRICE,TOTAL_PRICE)
+VALUES ('HDFC Bank',2,150,300);
+INSERT INTO WATCHLIST_DETAILS (	STOCK_NAME,QTY, SAVE_PRICE,TOTAL_PRICE)
+VALUES ('Titan Company',2,300,600);
