@@ -48,7 +48,21 @@ JPA allows to map application classes to tables in database.
     c) Criteria API defines a Java based API to execute searches against databases.
 
 4) Cross Origin:
-Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served.
+Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served. hence for communication of Springboot and Angular @CrossOrigin annotation is required
+
+5) JDBC Driver:
+A JDBC driver is a set of Java classes that implement the JDBC interfaces, targeting a specific database. The JDBC interfaces come with standard Java, but the implementation of these interfaces is specific to the database you need to connect to. Such an implementation is called a JDBC driver. For this MySQL JDBC Driver Maven Dependency is used.
+
+
+Made By Group 13: 
+1) Aditi Prabhakar Patil
+2) Aarya Mulaokar
+3) Pooja Jundhare
+4) Ruchi Bharadia
+5) Sneha Basargaon
+
+Mentor:
+Jayachandra Pendyala
 
 
 
