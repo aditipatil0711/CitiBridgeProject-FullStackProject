@@ -11,4 +11,5 @@ Dependencies used
 3) MySQL-Connector
 4) Lombok for Getters and Setter creation
 
-
+Functionalities:
+1)
