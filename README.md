@@ -34,7 +34,21 @@ You required to construct a trade recommendation system based on user-selected s
 
 
 Concepts Used:
-1) DB Design:
+1) DB Design: EER Diagram: Refer link of Image from github Repository:
+https://github.com/aditipatil0711/CitiBridgeProject-FullStackProject/blob/master/DB%20Design%20EEr.PNG
+
+2) JDBC Connection with Springboot :
+JDBC connection pooling is a mechanism that manages multiple database connection requests. In other words, it facilitates connection reuse, a memory cache of database connections, called a connection pool. A connection pooling module maintains it as a layer on top of any standard JDBC driver product.
+The default connection pool in Spring Boot 2 is HikariCP. It provides enterprise-ready features and better performance. HikariCP is a JDBC DataSource implementation that provides a connection pooling mechanism.
+
+3) Hibernate and JPA integration:
+JPA allows to map application classes to tables in database.
+    a) Entity Manager - Once the mappings are defined, entity manager can manage your entities. Entity Manager handles all interactions with the database
+    b)  JPQL (Java Persistence Query Language) - Provides ways to write queries to execute searches against entities. Important thing to understand is the these are different from SQL queries. JPQL queries already understand the mappings that are defined between entities. We can add additional conditions as needed.
+    c) Criteria API defines a Java based API to execute searches against databases.
+
+4) Cross Origin:
+Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served.
 
 
 
