@@ -1,2 +1,1 @@
-# CitiBridgeProjectFiles
 # CitiBridgeProject-FullStackProject
