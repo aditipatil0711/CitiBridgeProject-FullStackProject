@@ -6,6 +6,7 @@ export class WatchlistItem {
     stockName:string;
     savedPrice:number;
     quantity:number;
+
    
     constructor(stock: Stock){
         this.id = stock.id;
