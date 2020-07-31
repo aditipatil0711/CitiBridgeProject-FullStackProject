@@ -22,8 +22,7 @@ public class Watchlist {
     private double currentPrice;
 
 
-    @Column(name = "total_price")
-    private double totalPrice;
+
 
     public Long getId() {
         return Id;
@@ -57,11 +56,4 @@ public class Watchlist {
         this.currentPrice = savedPrice;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
 }
