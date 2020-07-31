@@ -42,12 +42,14 @@ export class WatchlistService {
     }
     else {
       this.watchlistItems.push(theWatchlistItem);
+      this.postWatchlist(theWatchlistItem);
+      console.log("Added now");
 
     }
     //compute cart total price and total quantity
     this.computeWatchlistTotals();
 
-     }
+  }
 
   computeWatchlistTotals() {
     let totalPriceValue: number = 0;
@@ -69,12 +71,12 @@ export class WatchlistService {
 
   logWatchlistData(totalPriceValue: number, totalQuantityValue: number) {
     console.log("Contents of the Watchlist");
-    this.getWatchlist();
-    console.log(`details: ${this.watchlistItems}`)
+    //this.getWatchlist();
+    //console.log(`details: ${this.watchlistItems}`)
     
     for (let tempWatchlistItem of this.watchlistItems) {
       const subTotalPrice = tempWatchlistItem.quantity * tempWatchlistItem.savedPrice;
-      console.log(`name: ${tempWatchlistItem.stockName},quantity: ${tempWatchlistItem.quantity}, currentPrice = ${tempWatchlistItem.savedPrice}, subTotalPrice: ${subTotalPrice}`);
+      console.log(`id: ${tempWatchlistItem.id},name: ${tempWatchlistItem.stockName},quantity: ${tempWatchlistItem.quantity}, currentPrice = ${tempWatchlistItem.savedPrice}, subTotalPrice: ${subTotalPrice}`);
     }
 
     console.log(`totalPrice:${totalPriceValue.toFixed(2)}, totalQuantity:${totalQuantityValue}`);
@@ -96,6 +98,7 @@ export class WatchlistService {
   remove(theWatchlistItem: WatchlistItem) {
     // get index of item in array
     const itemIndex = this.watchlistItems.findIndex(tempWatchlistItem => tempWatchlistItem.id === theWatchlistItem.id);
+    //delete request
     //if found remove the item from the array
     if (itemIndex > -1) {
       this.watchlistItems.splice(itemIndex, 1);
@@ -104,11 +107,35 @@ export class WatchlistService {
   }
 
   getWatchlist(): Observable<WatchlistItem[]> {
-    return this.httpClient.get<GetResponseWatchlistItems>(this.watchlistUrl).pipe(
-      map(response => response._embedded.watchlistDetails)
-    );
+    return this.httpClient.get<WatchlistItem[]>(this.watchlistUrl);
+    
   }
 
+  //post request
+  postWatchlist(theWatchlistItem:WatchlistItem){
+   this.httpClient.post<WatchlistItem>(this.watchlistUrl,theWatchlistItem).subscribe(
+     res =>{
+       console.log("Added");
+     }
+   );
+  }
+
+  //delete request
+  deleteWatchlist(theId:string){
+    return this.httpClient.delete<WatchlistItem>(`${this.watchlistUrl}/${theId}`).subscribe(
+      data =>{
+        console.log("Deleted");
+      }
+    )
+ }
+
+ updateWatchlist(theWatchlistItem:WatchlistItem){
+    this.httpClient.put(this.watchlistUrl,theWatchlistItem).subscribe(
+      data =>{
+        console.log("Updated");
+      }
+    )
+ }
 }
 
 interface GetResponseWatchlistItems {
