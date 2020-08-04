@@ -10,6 +10,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class WatchlistController {
+
+    // Controller for Crud Operations in Watchlist
     private WatchlistService watchlistService;
 
     public WatchlistController(WatchlistService theWatchlistService){
@@ -25,6 +27,8 @@ public class WatchlistController {
     private List<Watchlist> findAll(){
         return watchlistService.findAll();
     }
+
+
 
     @PutMapping("/watchlist-details")
     private Watchlist updateWatchlist(@RequestBody Watchlist theWatchlist){
