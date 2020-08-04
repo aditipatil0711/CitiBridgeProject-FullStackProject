@@ -25,11 +25,17 @@ Problem Statement:
 You required to construct a trade recommendation system based on user-selected sectors(from Nifty Stocks).
 
 1) User logs in to the system with a username and password(No need of a registration module- rather you can have  apredefined set of users in Database against which authentication is done).
+
 2) Once logged in, user selects a market sector(Automotive, financial, Health-Care, Technology etc.) in order to get suggestions in securities.
+
 3)Once selection of seector, filter for Nifty Constituentswhich match it, from the filtered secuirities - market data should be used to take top 5 performing stocks on the basis of growth over last two weeks.
+
 4)For these stocks, use live market data(like Yahoo Finance API) and as output display key statistics alongside the securities recommended.
+
 5) User can select to save any of the recommended stocks with quantity and current market price. The Data should be persisted in DB so that the data is not lost after the user closes the browser.
+
 6) When the user logs in again the user should be able to see the saved stocks and stats.
+
 7) Use an appropriate DB( like Oracle) for persistance, Business logic on application server eitha Single Page Web Application connected with REST API.
 
 
