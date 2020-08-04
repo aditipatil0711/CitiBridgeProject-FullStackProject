@@ -1,4 +1,5 @@
 export class Stock {
+    //All values in Stock Table for access
     id:string;
     sku:string;
     name: string;

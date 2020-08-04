@@ -2,6 +2,7 @@ import { Stock } from './stock';
 
 
 export class WatchlistItem {
+    //All variables for access into Watchlist Table
     id:string;
     stockName:string;
     savedPrice:number;
